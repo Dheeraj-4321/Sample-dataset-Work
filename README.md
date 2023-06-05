@@ -1,2 +1,3 @@
 # Sample-dataset-Work
-Progress Till Now
+Please Check Out the LR file first
+In other ipynb files I have not added my comments yet
