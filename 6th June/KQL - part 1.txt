@@ -1,0 +1,78 @@
+SecurityEvent // COLLECTION OF SECURITY LOGS
+// | take 1
+
+// LATEST QUERY WILL GOING TO BE WORK FOR TWO TABLE IMPLEMENTATION
+// Perf
+// | take 100
+
+// for print - log
+// print ""
+
+
+// SEARCH IN EACH COLUMN
+// | search "conhost.exe"// not case sensitive
+
+
+// CASE SENSITIVE SEARCH RESULT
+// | search kind=case_sensitive ""
+
+// SEARCH IN ONLY GIVEN TABLES
+// search in (table_names,,,) ""
+
+
+// 4688 - new process is created
+// 8002 - process allowed to AmlRunEvent
+// 4634 - process log Off
+// 4624- log in
+
+// FOR EXACT MATCH IN THE COLUMN
+// | search column_name == ""
+
+
+// FOR SEARCHING IN A PARTICULAR COLUMN A PARTICULAR STARTING SUBSTRING
+// | search column_name : ""
+
+
+// FOR SEARHING A SUBSTRING IN A PARTICULAR COLUMN WHETHER IT IS IN START, END OR IN BETWEEN
+// | search "* *" 
+
+
+
+
+// FOR SEARCHING OF A SUBSTRING STARTING IN A CELL OR ENDING IN A CELL
+
+// Table_name
+// | search * startswith ""
+// | search * endswith ""
+
+
+// | search ("start*end") and ("" or "")
+
+// search column_name matches regex "[A-Z]" - searching the charactrers from A to Z
+
+// REGEX - REGULAR EXPRESSION
+
+// Table_name
+// where column_name operator value or string
+
+
+// AGO(6H) FUNCTION IS USED TO TAKE RANGE OF AGO TIME TO CURRENT TIME
+
+// h - hours, d - days, m - minutes, s - seconds, ms
+
+
+// “==” IS CASE SENSITIVE, AND “CONTAINS” KEYWORD IS NOT - WE CAN USE BOTH WITH WHERE KEYWORD
+// contains means whether a particular Column has that string or not
+
+
+// * HASSUFFIX AND *HASPREFIX IS SAME LIKE THE *STARTSWITH AND *ENDSWITH
+// LIMIT IS LIKE TAKE KEYWORD
+// COUNT - COUNT THE NO. OF ROWS
+
+
+
+
+
+
+
+

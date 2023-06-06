@@ -1,0 +1,100 @@
+// The arg_max () function does the same thing as the max () function, which is to return the maximum value from a result set. 
+// However, arg_max () allows you to return other columns related to the maximum value, which max () does not.
+
+
+// SYNTAX
+
+// arg_max() wants atleast 2 arguments - first the column_name for which we need a max value, 
+// second - the columns that we want to print as well
+Dates
+| summarize arg_max(CalendarQuarter, CalendarDayOfWeek) // - use 2nd parameter as * to print all columns 
+
+// max() function
+Dates
+| summarize max(CalendarQuarter)
+
+// To get a List of a column - means all row of that column are convertd into a array 
+//  SYNTAX 
+
+// Dates
+// | summarize make_list(column_name)
+
+//  this method will also give duplicate values in the make_list
+Dates
+| take 100
+| summarize make_list(CalendarMonthLabel) by CalendarQuarter
+
+// to get unique values in the list we have to use make_set
+
+//latest query
+Dates
+| take 100
+| summarize make_set(CalendarMonthLabel) by CalendarQuarter
+
+// make_set can take two arguments first is column_name, second is size of array
+
+Dates
+| take 100
+| summarize makeset(CalendarMonthLabel)
+
+// for more fast counting use dcount - as it provides the count of all unique rows
+Dates
+| where CalendarYear between (2005 .. 2007)
+// | summarize dcount(CalendarYear) // - output - 3
+| summarize dcount(CalendarYear, 2) // 2nd parameter is for error% , 0 - 1.6%, 1 - 0.8%, 2 - 0.4%, 3 - 0%
+
+// the error parameter more used when we have to extract data from the past few days months and all
+
+
+// for plotting 
+Dates
+|take 10
+| project Datekey, CalendarDayOfWeek
+| render barchart
+
+// tip - use charts when we are counting something means we have a column with there count or frequency column
+
+
+
+// bin() - provide the frequency of a column after some step size of print frequency in a uniform range
+
+Dates
+// | where CalendarYear > 2005
+| summarize count() by bin(CalendarYear, 1)
+
+
+// to declare the variable
+let min = 100;
+
+
+// use semicolon while using let
+
+//we can store whole query into a variable using let
+
+let data = Dates| summarize cnt = count() by FiscalYear| where cnt > 300;
+data // now to print the query output we have to just write the variable name
+
+
+// let Table1 = SalesTable
+// | project SalesAmount, TotalCost, DateKey 
+
+let Table1 = datatable(id:int, value:string)
+[
+0, "Hello",
+1, "Bye",
+2, "Good",
+];
+let Table2 = datatable(id:int, value:string)
+[
+0, "Hello",
+1, "ByeBye",
+2, "Good",
+2, "Nice",
+3, "OK", 
+];
+Table1 | union Table2
+
+
+
+
+

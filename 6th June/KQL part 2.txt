@@ -1,0 +1,46 @@
+Customers
+| take 100
+| sort by Gender asc, CustomerKey asc
+
+// | sort by 
+// | summarize by Gender // this provides the different values in the column Gender
+// | summarize count() by Gender // this provides the different values in the column Gender with there Frequency
+
+// | summarize count() by column_1, column_2  :  // this will pick all the combinations where the each value in col 1 have diff val in col_2
+
+// example : col1 have - 43, 43, 42, 42
+// and col2 have : age, team, age, age
+
+// => output : col1   count   col2 
+//             43       1      age
+//             43       1     team
+//             42       2      age
+
+// | summarize count() by CityName, CustomerKey 
+
+
+// | summarize count() by bin(CityName,1d) -> this will give count from the data 1 day back till the current EndTime
+// 2nd parameter is like steps means after how many each steps u need your data
+
+// | project-away CityName : // drop the column
+
+// | prject-rename prev_col = new_col
+
+
+// | extend new_col = any_col operation - create new column
+
+// imp - if you are using extend and projecting the column but u don't mention the column that u are using in the extend syntax then it will show some error
+
+// distinct - it is used to show distinct combination of columns
+
+
+
+// sort by column_name - by default desc, we can do sorting using various column
+// another way of sorting is order by
+
+
+
+// | summarize min(column_name) - same for the max
+
+// 
+
